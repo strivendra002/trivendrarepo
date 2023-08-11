@@ -1,0 +1,30 @@
+<textarea name="" id="textarea" cols="30" rows="10"></textarea>
+<button id="button">Download</button>
+
+<script>
+
+    var button= document.getElementById("button")
+
+    button.addEventListener('click',function(e){
+        // alert('downloading');
+        var textareaVal=document.getElementById("textarea").value
+        var filename = "download.txt";
+
+        download(textareaVal,filename);
+    })
+    function download(textareaVal,filename){
+        var element = document.createElement('a')
+
+        element.setAttribute('href','data:text/plain;charset=utf-8'+encodeURIComponent(textareaVal))
+
+        element.setAttribute('download',filename)
+        element.style.display= 'null'
+
+        document.body.appendChild(element)
+
+        element.click()
+
+        document.body.removeChild(element)
+
+    }
+</script>
